@@ -1,0 +1,35 @@
+image: php:7.2.5
+
+stages:
+  - test
+  - production
+
+  cache:
+    paths:
+      - vendor/
+
+before_script:
+  - apt-get update
+  - apt-get install zip unzip
+  - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+  - php composer-setup.php
+  - php -r "unlink('composer-setup.php');" 
+
+Test:
+  stage: test
+  before_script:
+    - php composer.phar install
+  script:
+    # Set up the test DB
+    - php bin/console doctrine:database:create --env=test
+    - php bin/console doctrine:schema:create --env=test
+    - php bin/console doctrine:fixtures:load
+    # Run the tests
+    - ./bin/phpunit
+
+Production Deploy:
+  stage: production
+  before_script:
+    # Necessary production pre-requisite.
+  script:
+    # run the deploy script.
