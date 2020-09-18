@@ -42,3 +42,12 @@ php bin/console app:import-postcode
 php bin/console server:run
 
 ```
+
+###### Routes
+```
+# to search postcodes
+/search/{string}
+
+# to bring back postcodes based on a location
+/location/{lat}/{lng}
+```
