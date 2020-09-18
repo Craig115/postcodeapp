@@ -11,11 +11,10 @@
 apt-get install php7.2-mbstring
 apt-get install php7.2-xml
 apt-get install php7.2-zip
+apt-get install php7.2-mysql
 
 # Ensure you have MariaDB installed
 apt-get install mariadb-server mariadb-client
-
-apt-get install php7.2-mysql
 
 composer install
 ```
