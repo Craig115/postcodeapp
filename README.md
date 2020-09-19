@@ -1,5 +1,7 @@
 # postcodeapp
 
+Loads a CSV containing postcode data into a database, used by this symfony application
+
 ### How to use
 
 ###### Install
